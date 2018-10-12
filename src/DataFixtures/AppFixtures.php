@@ -26,21 +26,30 @@ class AppFixtures extends Fixture
             $category->setTitle('Category ' . $i);
             $category->setDescription('Category Description ' . $i);
 
-            $categories[] = $category;
+//            $categories[] = $category;
             $manager->persist($category);
-        }
-        $manager->flush();
+//            $manager->flush();
 
-        // create 20 products
-       for ($i = 0; $i < 20; $i++) {
             $article = new Article();
             $article->setTitle('title ' . $i);
             $article->setContent('content ' . $i);
             $article->setCreatedAt(new \DateTime('now'));
-            $category = $categories[0];
+//            $category = $categories[0];
             $article->setCategory($category->getId());
             $manager->persist($article);
         }
         $manager->flush();
+
+        // create 20 products
+        /*       for ($i = 0; $i < 20; $i++) {
+                  $article = new Article();
+                   $article->setTitle('title ' . $i);
+                   $article->setContent('content ' . $i);
+                   $article->setCreatedAt(new \DateTime('now'));
+                   $category = $categories[0];
+                   $article->setCategory($category->getId());
+                   $manager->persist($article);
+        }
+        $manager->flush();*/
     }
 }
