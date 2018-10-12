@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Categories {% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1> Categories! ✅</h1>
+    {%  dump(categories) %}
+    <ul>
+    {% for category in categories %}
+        <li><a href="{{ path('category', {'id' : category.id}) }}">Category: {{ category.title }}</a></li>
+        {% if category.description %}
+            {{ category.description }}
+        {% else %}
+            - No Category Description -
+        {% endif %}
+        <ul>
+        {% for article in category.articles%}
+        <li><b>{{ article.title }} </b> {{ ' ' ~ article.content }}</li>
+        {% endfor %}
+        </ul>
+        {#<li><a href="{{path('article', {'id' : article.id}) }}"> {{ article.title }} </a></li>#}
+    {% endfor %}
+    </ul>
+    <a href="{{ path('main') }}"> to list of Articles </a>
+</div>
+{% endblock %}
