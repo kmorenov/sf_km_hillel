@@ -10,7 +10,7 @@
 
 <div class="example-wrapper">
     <a href="{{ path('categories') }}"> to list of Categories </a>
-    <h1> Category: {{ category.title }}✅</h1>
+    <h1> Category: {{ category.title }}✅<a href="{{ path('category_index') }}">CRUD - Category Index</a></h1>
     <h2>{{ category.description }}</h2>
     <h5>Category internal ID: {{ category.id }}</h5>
 

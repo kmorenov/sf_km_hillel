@@ -9,10 +9,10 @@
 </style>
 
 <div class="example-wrapper">
-    <a href="{{ path('main') }}"> to list of Articles </a>
+    <a href="{{ path('article_index') }}">Articles Index</a>
     <h1> Article: {{ article.title }}✅</h1>
     <h2>{{ article.content }}</h2>
-    <h3><a href="{{ path('category', {'id' : article.category.id}) }}">Category: {{ article.category.id }}</a></h3>
+    <h3><a href="{{ path('categorykm', {'id' : article.category.id}) }}">Category: {{ article.category.id }}</a></h3>
     <h4>Created At: {{ article.createdAt.date }}</h4>
     <h5>Article internal ID: {{ article.id }}</h5>
 

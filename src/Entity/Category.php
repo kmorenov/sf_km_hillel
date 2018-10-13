@@ -38,6 +38,11 @@ class Category
         $this->articles = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->title ? $this->title : 'New';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -9,11 +9,11 @@
 </style>
 
 <div class="example-wrapper">
-    <h1> Categories! ✅</h1>
+    <h1> Categories! ✅<a href="{{ path('category_index') }}">CRUD - Category Index</a></h1>
     {%  dump(categories) %}
     <ul>
     {% for category in categories %}
-        <li><a href="{{ path('category', {'id' : category.id}) }}">Category: {{ category.title }}</a></li>
+        <li><a href="{{ path('categorykm', {'id' : category.id}) }}">Category: {{ category.title }}</a></li>
         {% if category.description %}
             {{ category.description }}
         {% else %}
