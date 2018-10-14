@@ -7,6 +7,9 @@ use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/km")
+ */
 class MainController extends AbstractController
 {
     /**
@@ -20,7 +23,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/articlekm/{id}", name="articlekm")
+     * @Route("/article/{id}", name="articlekm")
      */
     public function article($id, ArticleRepository $articleRepository)
     {
@@ -39,7 +42,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/categorykm/{id}", name="categorykm")
+     * @Route("/category/{id}", name="categorykm")
      */
     public function category($id, CategoryRepository $categoryRepository)
     {
