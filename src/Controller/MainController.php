@@ -5,12 +5,15 @@ namespace App\Controller;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
+
+use App\Service\MainManager;
 
 /**
  * @Route("/km")
  */
-class MainController extends AbstractController
+class MainController extends Controller   //AbstractController
 {
     /**
      * @Route("/main", name="main")
@@ -18,6 +21,7 @@ class MainController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository)
     {
+//        $mm = $this->get(MainManager::class);   *** NOT NEEDED YET
         $articles = $articleRepository->findAll();
         return $this->render('main/index.html.twig', ['articles' => $articles]);
     }
