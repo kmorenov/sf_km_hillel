@@ -13,7 +13,7 @@
     {%  dump(categories) %}
     <ul>
     {% for category in categories %}
-        <li><a href="{{ path('categorykm', {'id' : category.id}) }}">Category: {{ category.title }}</a></li>
+        <li><a href="{{ path('category', {'id' : category.id}) }}">Category: {{ category.title }}</a></li>
         {% if category.description %}
             {{ category.description }}
         {% else %}

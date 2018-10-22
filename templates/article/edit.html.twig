@@ -5,6 +5,16 @@
 {% block body %}
     <h1>Edit Article</h1>
 
+    {% block content %}
+        {#{% if app.flashes('article_updated')  %}#}
+        {% for msg in app.flashes('article_updated') %}
+            <div class="alert alert-success" role="alert">
+                {{ msg }}
+            </div>
+        {% endfor %}
+        {#{% endif %}#}
+    {% endblock %}
+
     {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('article_index') }}">back to list</a>

@@ -9,8 +9,9 @@
 </style>
 
 <div class="example-wrapper">
-    <a href="{{ path('categories') }}"> to list of Categories </a>
-    <h1> Category: {{ category.title }}✅<a href="{{ path('category_index') }}">CRUD - Category Index</a></h1>
+    <a href="{{ path('categories') }}"> list of Categories </a> ---
+    <a href="{{ path('category_index') }}"><b>CRUD Category Index</b></a>
+    <h1> Category: {{ category.title }}✅</h1>
     <h2>{{ category.description }}</h2>
     <h5>Category internal ID: {{ category.id }}</h5>
 

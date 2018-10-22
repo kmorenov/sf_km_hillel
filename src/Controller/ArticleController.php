@@ -65,6 +65,9 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('article_updated', 'Article: ' . $article->getTitle() . ' was updated.');
+//            dump($form);
+
             return $this->redirectToRoute('article_edit', ['id' => $article->getId()]);
         }
 

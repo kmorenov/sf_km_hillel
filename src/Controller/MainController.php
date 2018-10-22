@@ -27,7 +27,7 @@ class MainController extends Controller   //AbstractController
     }
 
     /**
-     * @Route("/article/{id}", name="articlekm")
+     * @Route("/article/{id}", name="article")
      */
     public function article($id, ArticleRepository $articleRepository)
     {
@@ -46,7 +46,7 @@ class MainController extends Controller   //AbstractController
     }
 
     /**
-     * @Route("/category/{id}", name="categorykm")
+     * @Route("/category/{id}", name="category")
      */
     public function category($id, CategoryRepository $categoryRepository)
     {

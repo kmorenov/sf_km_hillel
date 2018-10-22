@@ -9,12 +9,14 @@
 </style>
 
 <div class="example-wrapper">
-    <a href="{{ path('article_index') }}">Articles Index</a>
+    <a href="{{ path('article_index') }}">Article Index</a>
+    {% dump(app.request.get('_route')) %}
     <h1> Article: {{ article.title }}✅</h1>
     <h2>{{ article.content }}</h2>
-    <h3><a href="{{ path('categorykm', {'id' : article.category.id}) }}">Category: {{ article.category.id }}</a></h3>
+    <h3><a href="{{ path('category', {'id' : article.category.id}) }}">Category: {{ article.category.id }}</a></h3>
     <h4>Created At: {{ article.createdAt.date }}</h4>
     <h5>Article internal ID: {{ article.id }}</h5>
+    <a href="{{ getArticleUrlById(article.id) }}">getArticleUrlById</a>
 
 
 </div>
