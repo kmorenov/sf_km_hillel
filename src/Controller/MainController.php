@@ -24,6 +24,7 @@ class MainController extends Controller   //AbstractController
 //        $mm = $this->get(MainManager::class);   *** NOT NEEDED YET
         $articles = $articleRepository->findAll();
         return $this->render('main/index.html.twig', ['articles' => $articles]);
+//        return $this->denyAccessUnlessGranted('main/index.html.twig', ['articles' => $articles]);
     }
 
     /**

@@ -23,6 +23,15 @@
                 <th>CreatedAt</th>
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ article.author }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ article.category }}</td>
+            </tr>
+
         </tbody>
     </table>
 

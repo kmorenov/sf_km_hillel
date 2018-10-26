@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Article
 {
@@ -35,6 +36,11 @@ class Article
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
      */
     private $category;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $author;
 
 
     public function getId(): ?int
@@ -88,5 +94,31 @@ class Article
         $this->category = $category;
 
         return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?string $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+/*    public function __toString()
+    {
+        return $this->title ? $this->title : 'New';
+    }*/
+
+    /**
+     * @ORM\PrePersist()
+     */
+
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
     }
 }

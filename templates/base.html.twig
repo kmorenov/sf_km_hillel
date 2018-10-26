@@ -12,16 +12,17 @@
     </head>
     <body>
 
-        <h2><a href="{{ path('main') }}">Home</a></h2>
+        <h2><a href="{{ path('main') }}">Home</a> {{'User: ' ~ app.user.username}}</h2>
+
         {% block body %}
-            <header>Header</header>
+            <header>Base Header</header>
 
             <div class="container">
                 <div class="main">
-                    {% block content %}{% endblock %}
+                    {% block content %}Base Content{% endblock %}
                 </div>
             </div>
-            <footer>Footer</footer>
+            <footer>Base Footer</footer>
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
