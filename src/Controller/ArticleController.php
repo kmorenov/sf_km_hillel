@@ -34,7 +34,7 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         dump($this->getUser());
-        $article->setAuthor($this->getUser()->getUsername());
+        $article->setAuthor($this->getUser()); //->getUsername());
 
 
         if ($form->isSubmitted() && $form->isValid()) {

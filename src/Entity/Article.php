@@ -38,9 +38,15 @@ class Article
     private $category;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="authorArticles")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $author;
+
+/*
+     @ORM\Column(type="string", length=100, nullable=true)
+
+    private $author;*/
 
 
     public function getId(): ?int
@@ -96,7 +102,7 @@ class Article
         return $this;
     }
 
-    public function getAuthor(): ?string
+/*    public function getAuthor(): ?string
     {
         return $this->author;
     }
@@ -106,7 +112,7 @@ class Article
         $this->author = $author;
 
         return $this;
-    }
+    }*/
 
 /*    public function __toString()
     {
@@ -120,5 +126,17 @@ class Article
     public function setCreatedAtValue()
     {
         $this->createdAt = new \DateTime();
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
     }
 }

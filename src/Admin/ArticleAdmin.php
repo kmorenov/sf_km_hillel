@@ -36,7 +36,7 @@ class ArticleAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('id')
-            ->add('title')
+            ->addIdentifier('title')
             ->add('category')
             ->add('content', null, ['editable' => true])
             ->add('author')
