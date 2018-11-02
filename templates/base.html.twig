@@ -16,10 +16,11 @@
 
         {% block body %}
             <header>Base Header</header>
+            <header>{% include '@PaladinUser/Security/login.html.twig' with {'error' : null, 'last_username': 'kmorenov'} %}</header>
 
             <div class="container">
                 <div class="main">
-                    {% block content %}Base Content{% endblock %}
+                    {% block content %}{{ 'Base Content'| upper }} {% endblock %}
                 </div>
             </div>
             <footer>Base Footer</footer>
