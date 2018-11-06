@@ -25,6 +25,7 @@ class CommentController extends AbstractController
             ->setContent($request->get('content'));
         $em->persist($comment);
         $em->flush();
+        $this->addFlash('article_update', 'Your comment has been added!');
         return $this->redirectToRoute('article', ['id' => $article->getId()]);
     }
 }

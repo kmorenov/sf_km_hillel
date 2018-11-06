@@ -20,15 +20,22 @@
     {#{{ parent() }}#}
     {#Parent Finish#}
     {% block content %}
-        Content
-        <a href="/admin">SONATA ADMIN</a>
+        <h4><a href="/admin">SONATA ADMIN</a> | <a href="{{ path('article_index') }}">CRUD - Articles Index</a></h4>
         <div class="example-wrapper">
-            <h1> Articles! ✅<a href="{{ path('article_index') }}">CRUD - Articles Index</a></h1>
-
+            <h2> Articles & comments ✅</h2>
             {% dump(articles) %}
             <ul>
                 {% for article in articles %}
-                    <li><a href="{{ path('article', {'id' : article.id}) }}"> {{ article.title }} </a></li>
+                    <li><h5><a href="{{ path('article', {'id' : article.id}) }}"> {{ article.title }} </a></h5></li>
+                    <ul>
+                        {% for comment in article.comments %}
+                            <li>
+                                <h6>{{ comment.content ~ ' (by ' ~ comment.author ~ ' on ' ~ comment.createdAt | date('d-m-y') ~ ')' }}</h6>
+                            </li>
+                        {% else %}
+                            <h6>--- no comments yet ---</h6>
+                        {% endfor %}
+                    </ul>
                 {% endfor %}
             </ul>
             <a href="{{ path('categories') }}">Categories</a>

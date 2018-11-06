@@ -16,21 +16,28 @@
             padding: 2px 6px;
         }
     </style>
-    {{ parent() }}
+    {#{{ parent() }}#}
+    {% for message in app.flashes('article_update') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-    <div class="example-wrapper">
-        <a href="{{ path('article_index') }}">Article Index</a>
+    <div style="border: thin solid deepskyblue" class="example-wrapper">
+        <legend><h1> Article: {{ article.title }}✅</h1></legend>
+        <h2><a href="{{ path('article_index') }}">Article Index</a></h2>
         {% dump(app.request.get('_route')) %}
-        <h1> Article: {{ article.title }}✅</h1>
-        <h2>{{ article.content }}</h2>
-        <h3><a href="{{ path('category', {'id' : article.category.id}) }}">Category: {{ article.category.id }}</a></h3>
-        <h4>Created At: {{ article.createdAt.date }}</h4>
-        <h5>Article internal ID: {{ article.id }}</h5>
-        <a href="{{ getArticleUrlById(article.id) }}">getArticleUrlById</a>
+        <h3>{{ article.content }}</h3>
+        <h4><a href="{{ path('category', {'id' : article.category.id}) }}">Category: {{ article.category.id }}</a></h4>
+        <h5>Created At: {{ article.createdAt.date }}</h5>
+        <h6><a href="{{ getArticleUrlById(article.id) }}">getArticleUrlById Article internal ID: {{ article.id }}</a>
+            </h6>
 
     </div>
-    <div style="border: thin solid deepskyblue" class="form-group" legend="comment">
+
+    <div style="border: thin solid deepskyblue" class="example-wrapper code">
         <legend>Comments</legend>
+
         <ul>
             {% for comment in article.comments %}
                 <li>{{ comment.content }}
@@ -39,7 +46,7 @@
             {% endfor %}
         </ul>
         <form action="{{ path('comment', {'article' : article.id}) }}">
-            <textarea name="content" cols=100 placeholder="Type your comment here"></textarea>
+            <textarea name="content" cols=50 placeholder="Type your comment here"></textarea>
             <br/>
             <button>Submit Comment</button>
         </form>

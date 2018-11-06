@@ -11,6 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * @Route("/article")
  */
@@ -30,14 +35,29 @@ class ArticleController extends AbstractController
     public function new(Request $request): Response
     {
         $article = new Article();
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(ArticleType::class, $article, []);
         $form->handleRequest($request);
 
-        dump($this->getUser());
-        $article->setAuthor($this->getUser()); //->getUsername());
-
-
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+//            $file = new UploadedFile();
+            $file = $article->getImage();
+            dump($file);
+
+            $filename = uniqid().'.'.$file->guessExtension();
+
+            try{
+                $file->move(realpath('uploads'),
+                    $filename);
+            }catch (FileException $e){
+
+            }
+
+            $article->setImage($filename);
+
+            dump($this->getUser());
+            $article->setAuthor($this->getUser()); //->getUsername());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();

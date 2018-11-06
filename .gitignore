@@ -19,3 +19,6 @@
 /bin/
 /tests/
 !/tests/
+/src/Form/CommentType.php
+!/composer.json
+!/composer.lock

@@ -12,7 +12,7 @@
     </head>
     <body>
 
-        <h2><a href="{{ path('main') }}">Home</a> {{'User: ' ~ app.user.username}}</h2>
+        <h4><a href="{{ path('main') }}">Home</a> {{'User: ' ~ app.user.username}}</h4>
 
         {% block body %}
             <header>Base Header</header>
@@ -20,7 +20,7 @@
 
             <div class="container">
                 <div class="main">
-                    {% block content %}{{ 'Base Content'| upper }} {% endblock %}
+                    {% block content %}<h1>{{ 'toggle parent() to show/hide this base content'| upper }}</h1> {% endblock %}
                 </div>
             </div>
             <footer>Base Footer</footer>

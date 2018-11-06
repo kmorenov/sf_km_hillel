@@ -50,6 +50,11 @@ class Article
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -110,10 +115,10 @@ class Article
     }
 
 
-/*    public function __toString()
+    public function __toString()
     {
         return $this->title ? $this->title : 'New';
-    }*/
+    }
 
     /**
      * @ORM\PrePersist()
@@ -163,6 +168,18 @@ class Article
                 $comment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
